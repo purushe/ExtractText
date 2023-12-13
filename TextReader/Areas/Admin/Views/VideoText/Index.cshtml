@@ -1,0 +1,109 @@
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header">
+    <div class="container pt-5">
+        <div class="row g-5 pt-5">
+            <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
+                <h1 class="display-4 text-white mb-4 animated slideInRight">Video</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Extract</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Video</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-6 align-self-end text-center text-lg-end">
+                <img class="img-fluid" src="/assets/img/hero-img.png" alt="" style="max-height: 300px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Video</div>
+            <h1 class="mb-4">Please Upload Video To Extract Text form It</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+                    @if (!string.IsNullOrEmpty(ViewBag.Error))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.Error
+                        </div>
+                    }
+                    <form asp-area="Admin" asp-controller="VideoText" asp-action="Video" method="post" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="file" class="form-control" accept=".mp4" name="videoFile" placeholder="Upload Video">
+                                    <label for="videoFile">Video</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <a class="btn btn-primary w-100 py-3" asp-area="Admin" asp-controller="Home" asp-action="Index">Back</a>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Extract</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+        height: 300px;
+        "></div>
+    <!-- Background image -->
+
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+        <div class="card-body py-5 px-md-5">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-5">Upload Audio File</h2>
+                    @if (!string.IsNullOrEmpty(ViewBag.Error))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <form asp-controller="VideoText" asp-action="UploadVideo" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="audioFile">Choose Video File</label>
+                            <input type="file" name="audioFile" class="form-control" accept=".mp4" style="height:auto" />
+                            <!-- Add the 'accept' attribute to specify allowed file types -->
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Extract</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    @if (!string.IsNullOrEmpty(ViewBag.TranscribedText))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <h2>Audio text</h2>
+                            <p>@ViewBag.TranscribedText</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section: Design Block -->
+*@

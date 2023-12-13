@@ -1,0 +1,181 @@
+@model string
+
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header">
+    <div class="container pt-5">
+        <div class="row g-5 pt-5">
+            <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
+                <h1 class="display-4 text-white mb-4 animated slideInRight">Chat-GPT</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Chat-GPT</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-6 align-self-end text-center text-lg-end">
+                <img class="img-fluid" src="/assets/img/hero-img.png" alt="" style="max-height: 300px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+<div class="row g-0">
+    <div class="col-12 col-lg-5 col-xl-3 border-right" style="width:20%">
+
+        <div class="px-4 d-none d-md-block">
+            <div class="py-2 px-4 border-bottom d-none d-lg-block">
+                <div class="d-flex align-items-center py-1">
+                    <div class="flex-grow-1 pl-3">
+                        <h4 class="h4">New Chat</h4>
+                    </div>
+                    <div class="flex-grow-1 mb-7">
+                        <i class="fas fa-edit fa-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    Tell me About Bihar
+                </div>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    Is AI the future
+                </div>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    Who is Mahendra Singh Dhoni
+                </div>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    Who is the President of India
+                </div>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    Who was Founder of Computer
+                </div>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    How many State in India
+                </div>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1 ml-3">
+                    Where is Capital of India
+                </div>
+            </div>
+        </a>
+
+        <hr class="d-block d-lg-none mt-1 mb-0">
+    </div>
+    <div class="col-12 col-lg-7 col-xl-9" style="width:80%">
+        <div class="py-2 px-4 border-bottom d-none d-lg-block">
+            <div class="d-flex align-items-center py-1">
+                <div class="flex-grow-1 pl-3">
+                    <h4 class="h4">Chat-GPT</h4>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative">
+            @if (ViewBag.ChatHistory != null)
+            {
+                <div class="chat-messages">
+                    @if (((List<ChatMessage>)ViewBag.ChatHistory).Count > 0)
+                    {
+                        foreach (var message in ViewBag.ChatHistory as List<ChatMessage>)
+                        {
+                            <div class="chat-message-@message.Sender.ToLower() pb-4">
+                                <div>
+                                    <div class="text-muted small text-nowrap mt-2">@message.Timestamp.ToString("h:mm tt")</div>
+                                </div>
+                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 @(message.Sender.ToLower() == "you" ? "mr-3" : "ml-3")">
+                                    <div class="font-weight-bold mb-1">@message.Sender</div>
+                                    @message.Message
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="chat-messages" style="padding: 204px;">
+                    <div>
+                        <p>No messages yet. Ask a question to start the conversation.</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="flex-grow-0 py-3 px-4 border-top">
+            <form asp-controller="GPT" asp-action="GetAnswer" method="post">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="msg" name="prompt" placeholder="Message ChatGPT...">
+                            <label for="prompt">Message ChatGPT...</label>
+                            <button class="btn btn-primary mb-6" type="submit"><i class="fa fa-paper-plane fs-5"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .mb-6 {
+        margin-top: -85px;
+        margin-left: 972px;
+    }
+
+    .mb-7 {
+        margin-top: -12px;
+        margin-left: 41px;
+    }
+
+    /* Adjust New Chat area */
+    .col-12.col-lg-5.col-xl-3.border-right {
+        width: 20%;
+    }
+
+    /* Adjust ChatGPT area */
+    .col-12.col-lg-7.col-xl-9 {
+        width: 80%;
+    }
+
+    /* Add styles for the chat messages area */
+    .chat-messages {
+        max-height: 400px; /* You can adjust the max height as needed */
+        overflow-y: auto;
+    }
+
+    /* Add styles for the chat input area */
+    /*.flex-grow-0.py-3.px-4.border-top {
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+        }*/
+
+
+</style>

@@ -1,0 +1,209 @@
+<!-- Hero Start -->
+<div class="container-fluid pt-5 bg-primary hero-header">
+    <div class="container pt-5">
+        <div class="row g-5 pt-5">
+            <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
+                <h1 class="display-4 text-white mb-4 animated slideInRight">Users</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Users</a></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-6 align-self-end text-center text-lg-end">
+                <img class="img-fluid" src="/assets/img/hero-img.png" alt="" style="max-height: 300px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="userTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>User Name</th>
+                                    <th>Phone Number</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input class="form-control form-filter input-sm" name="FirstName" placeholder="First Name">
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-filter input-sm" name="LastName" placeholder="Last Name">
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-filter input-sm" name="Email" placeholder="Email">
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-filter input-sm" name="UserName" placeholder="User Name">
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-filter input-sm" name="PhoneNumber" placeholder="Phone Number">
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="text-primary text-bold filter-submit"><i class="fa fa-search fa-lg"></i></a>|
+                                        <a class="text-danger text-bold filter-cancel"><i class="fa fa-times fa-lg"></i></a>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+      debugger;
+        var dtList = $('#userTable').DataTable({
+            pageLength: 10,
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            orderCellsTop: true,
+            autoWidth: false,
+            ajax: {
+                url: "/Admin/User/GetList",
+                type: "POST"
+            },
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }, orderable: true
+                },
+                {
+                    name: 'FirstName',
+                    data: 'firstName',
+                    orderable: true
+                },
+                {
+                    name: 'LastName',
+                    data: 'lastName',
+                    orderable: true
+                },
+                {
+                    name: 'Email',
+                    data: 'email',
+                    orderable: true
+                },
+                {
+                    name: 'UserName',
+                    data: 'userName',
+                    orderable: true
+                },
+                {
+                    name: 'PhoneNumber',
+                    data: 'mobileNumber',
+                    orderable: true
+                },
+
+                {
+                    name: 'Action',
+                    data: null,
+                    orderable: false,
+                    render: function (data) {
+                        var editLink = "<a href='/Admin/Category/EditCategory/" + data.id + "'><i class='fa fa-edit fa-lg pl-2'></i></a>&nbsp;";
+                        var deleteLink = "<a href='/Admin/Category/DeleteCategory/" + data.id + "'><i class='fa fa-trash fa-lg text-danger pl-2'></i></a>";
+
+                        return "<div class='text-center'>" + editLink + deleteLink + "</div>";
+                    }
+                }
+
+            ],
+            order: [[0, "asc"]]
+        });
+
+        $('.filter-submit').click(function () {
+            $('.form-filter').each(function () {
+                var columnName = $(this).attr('name');
+                var column = dtList.column(columnName + ':name');
+
+                var columnValue = $('.form-filter[name="' + columnName + '"]').val();
+                if (column.search() !== columnValue) {
+                    column.search(columnValue);
+                }
+            });
+
+            dtList.draw();
+        });
+
+        $('.filter-cancel').click(function () {
+            dtList.columns().every(function () {
+                var that = this;
+                that.search('');
+            });
+            $('input.form-filter, select.form-filter').val('');
+            dtList.draw();
+        });
+
+        $(".form-filter").keypress(function (event) {
+            if (event.which === 13) {
+                $('.filter-submit').trigger("click");
+            }
+        });
+    });
+</script>
+
+
+@*Generate the confirmation pop-up for user confirmations
+            $(document).on('click', 'a.btnDelete', function () {
+                var id = $(this).attr('id');
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this User!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: true
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        deleteUser(id);
+                    } else {
+                        swal("Cancelled", "FAQ is safe :)", "error");
+                    }
+                });
+            });
+            //This method is use to delete the blog with given id parameter
+            function deleteUser(id) {
+                $.ajax({
+                    url: "user/Delete",
+                    type: "POST",
+                    async: false,
+                    data: { id: id },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status) {
+                            swal("Deleted!", "Record has been deleted.", "success");
+                            location.reload();
+                        } else {
+                            swal("Exception!", data.Message, "error");
+                        }
+                    },
+                    error: function (_, __, error) {
+                        swal("Exception!", error.message, "error");
+                    }
+                });
+            }*@

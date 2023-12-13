@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextReader", "TextReader\TextReader.csproj", "{9BA3224E-B527-4EFB-9D15-0A1EBE96F53D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{AAACFB92-0A2E-4FB1-BA6F-C0231A120720}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helper", "Helper", "{10BD786A-53D2-45A2-8FA5-ECECBF479EFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{B07B0F05-F0EA-4B38-B970-A4E0BC90B517}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextReader.Utility", "TextReader.Utility\TextReader.Utility.csproj", "{2064B633-60D4-4DD9-89E0-D8AE841B85E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextReader.Data", "TextReader.Data\TextReader.Data.csproj", "{DBE831E2-C9AD-4C2B-B8C0-2519C787838C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextReader.Repository", "TextReader.Repository\TextReader.Repository.csproj", "{C8C0218E-1D83-49D1-8E85-1623DA8EDB1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextReader.RepositoryModel", "TextReader.RepositoryModel\TextReader.RepositoryModel.csproj", "{EA1E35E8-E868-4EE2-8620-B3710B47F2ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BA3224E-B527-4EFB-9D15-0A1EBE96F53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA3224E-B527-4EFB-9D15-0A1EBE96F53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA3224E-B527-4EFB-9D15-0A1EBE96F53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA3224E-B527-4EFB-9D15-0A1EBE96F53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2064B633-60D4-4DD9-89E0-D8AE841B85E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2064B633-60D4-4DD9-89E0-D8AE841B85E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2064B633-60D4-4DD9-89E0-D8AE841B85E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2064B633-60D4-4DD9-89E0-D8AE841B85E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE831E2-C9AD-4C2B-B8C0-2519C787838C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE831E2-C9AD-4C2B-B8C0-2519C787838C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE831E2-C9AD-4C2B-B8C0-2519C787838C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE831E2-C9AD-4C2B-B8C0-2519C787838C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C0218E-1D83-49D1-8E85-1623DA8EDB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C0218E-1D83-49D1-8E85-1623DA8EDB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C0218E-1D83-49D1-8E85-1623DA8EDB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C0218E-1D83-49D1-8E85-1623DA8EDB1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA1E35E8-E868-4EE2-8620-B3710B47F2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA1E35E8-E868-4EE2-8620-B3710B47F2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA1E35E8-E868-4EE2-8620-B3710B47F2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA1E35E8-E868-4EE2-8620-B3710B47F2ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BA3224E-B527-4EFB-9D15-0A1EBE96F53D} = {AAACFB92-0A2E-4FB1-BA6F-C0231A120720}
+		{2064B633-60D4-4DD9-89E0-D8AE841B85E8} = {10BD786A-53D2-45A2-8FA5-ECECBF479EFE}
+		{DBE831E2-C9AD-4C2B-B8C0-2519C787838C} = {B07B0F05-F0EA-4B38-B970-A4E0BC90B517}
+		{C8C0218E-1D83-49D1-8E85-1623DA8EDB1C} = {B07B0F05-F0EA-4B38-B970-A4E0BC90B517}
+		{EA1E35E8-E868-4EE2-8620-B3710B47F2ED} = {B07B0F05-F0EA-4B38-B970-A4E0BC90B517}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4B6E11F-89A0-4D11-9501-24E8A8183386}
+	EndGlobalSection
+EndGlobal

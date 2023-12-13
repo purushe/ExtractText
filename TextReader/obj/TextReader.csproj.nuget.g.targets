@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)tesseract\5.2.0\build\Tesseract.targets" Condition="Exists('$(NuGetPackageRoot)tesseract\5.2.0\build\Tesseract.targets')" />
+    <Import Project="$(NuGetPackageRoot)system.speech\8.0.0\buildTransitive\netcoreapp2.0\System.Speech.targets" Condition="Exists('$(NuGetPackageRoot)system.speech\8.0.0\buildTransitive\netcoreapp2.0\System.Speech.targets')" />
+    <Import Project="$(NuGetPackageRoot)system.codedom\7.0.0\buildTransitive\netcoreapp2.0\System.CodeDom.targets" Condition="Exists('$(NuGetPackageRoot)system.codedom\7.0.0\buildTransitive\netcoreapp2.0\System.CodeDom.targets')" />
+    <Import Project="$(NuGetPackageRoot)system.management\7.0.2\buildTransitive\netcoreapp2.0\System.Management.targets" Condition="Exists('$(NuGetPackageRoot)system.management\7.0.2\buildTransitive\netcoreapp2.0\System.Management.targets')" />
+    <Import Project="$(NuGetPackageRoot)magick.net-q16-anycpu\13.4.0\build\netstandard20\Magick.NET-Q16-AnyCPU.targets" Condition="Exists('$(NuGetPackageRoot)magick.net-q16-anycpu\13.4.0\build\netstandard20\Magick.NET-Q16-AnyCPU.targets')" />
+  </ImportGroup>
+</Project>
